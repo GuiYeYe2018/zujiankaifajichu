@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <!-- 3，使用组件 -->
+        <cpn></cpn>
+        <cpn3></cpn3>
+        <cpn4></cpn4>
+        <cpn5></cpn5>
+
+    </div>
+
+
+    <template id='cpnt'>
+        <div>
+            <h3>标题5</h3>
+            </div>
+    </template>
+
+    <script src="../scoendVue/vue.js"></script>
+    <script>
+
+
+const D= Vue.extend({
+            template:`
+            <div>
+            <h2>标题2</h2>
+
+            </div>
+            `
+        })
+
+
+        //1,创建组件
+        const C = Vue.extend({
+            template:`
+            <div>
+            <h1>标题</h1>
+            <cpn2></cpn2>
+            </div>
+            
+            `
+            ,
+            components:{
+                cpn2:D
+            }
+        })
+
+        
+        //2，注册组件    
+        //Vue.component('my-cpn',C)//全局注册，可以在多个VUE实例中使用
+
+        //注册的语法糖
+        Vue.component(
+            "cpn3",{
+                template:
+               ` <div>
+            <h3>标题3</h3>
+            </div>`
+            
+            }
+        )
+      
+
+
+        const vue = new Vue({
+            el:'#app',
+            data:{
+                message:'你好世界'
+            },
+            components:{
+                cpn:C,//局部注册
+                cpn4:{
+                    template:
+                    ` <div>
+            <h4>标题4</h4>
+            </div>`
+                },
+                cpn5:{
+                    template:
+                    '#cpnt'
+                }
+               
+            
+            }
+
+        })
+
+
+    </script>
+    
+</body>
+</html>

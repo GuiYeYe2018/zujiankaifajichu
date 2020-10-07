@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <cpn></cpn>
+        <cpn></cpn>
+        <cpn></cpn>
+        <cpn></cpn>
+
+    </div>
+
+
+
+    <template id='cpnt'>
+        <div>
+            <h2>当前数字：{{count}}</h2>
+            <button id='add' @click="addbutton">+</button>
+            <button id='jian' @click='jianbutton'>-</button>
+        </div>
+    </template>
+
+    <script src="../scoendVue/vue.js"></script>
+    <script>
+        Vue.component("cpn",{
+            template:'#cpnt',
+            data(){
+                return{ 
+                    count:0              
+                }      
+            },
+            methods:{
+                addbutton(){
+                    this.count++
+                },
+                jianbutton(){
+                    this.count--
+                }
+            }
+        })
+
+        const app = new Vue({
+            el:'#app'
+        })
+
+    </script>
+</body>
+</html>
