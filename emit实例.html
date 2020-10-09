@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <newcpn @itemclick='fitem'></newcpn>
+
+    </div>
+
+
+    
+    <template id='cpnt'>
+        <div>
+            <button v-for="item in categories" @click='xiangying(item)'>{{item.name}}</button>
+        </div>
+    </template>
+    
+    <script src="../scoendVue/vue.js"></script>
+    <script>
+
+
+        const cpn ={
+            template:'#cpnt',
+            data(){
+                return{
+                    categories:[
+                        {id:1,name:'第一项'},
+                        {id:2,name:'第二项'},
+                        {id:3,name:'第三项'},
+                        {id:4,name:'第四项'}
+                    ]
+                }
+            },
+            methods:{
+                xiangying(item){
+                    console.log(item);
+                    this.$emit('itemclick')
+                }
+            }
+
+        }
+
+        const app = new Vue({
+            el:'#app',
+            data:{
+            },
+            components:{
+                newcpn:cpn,
+            },
+            methods:{
+                fitem(){
+                    console.log("我被射了")
+                }
+            }
+        })
+    </script>
+</body>
+</html>
